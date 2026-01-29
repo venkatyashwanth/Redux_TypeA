@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE } from "../constants/productConstants";
+import { FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE, SET_SELECTED_PRODUCT, CLEAR_SELECTED_PRODUCT } from "../constants/productConstants";
 
 
 export const fetchProducts = async (dispatch) => {
@@ -13,7 +13,16 @@ export const fetchProducts = async (dispatch) => {
     } catch (error) {
         dispatch({
             type: FETCH_PRODUCTS_FAILURE,
-            payload:error.message
+            payload: error.message
         })
     }
 }
+
+export const setSelectedProduct = (product) => ({
+    type: SET_SELECTED_PRODUCT,
+    payload: product
+})
+
+export const clearSelectedProduct = () => ({
+    type: CLEAR_SELECTED_PRODUCT
+})
